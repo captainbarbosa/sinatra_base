@@ -1,9 +1,12 @@
 require 'rubygems'
 require 'bundler/setup'
-require 'sinatra'
+require 'sinatra' # Will start web server
 require 'active_record'
 require 'pry'
 
-# get '/' do
-#   "I am Groot"
-# end
+# Set up production DB
+# require './production_db'
+
+get '/' do
+  "Hello!"
+end

@@ -2,6 +2,10 @@ require "./tests/test_helper"
 require './migrations'
 require './app'
 
+require './company'
+require './department'
+require './employee'
+
 # Initialize test DB
 ActiveRecord::Base.establish_connection(
   adapter:  'sqlite3',
@@ -12,7 +16,6 @@ ActiveRecord::Base.establish_connection(
 begin CompanyDataMigration.migrate(:down); rescue; end
 CompanyDataMigration.migrate(:up)
 
-binding.pry
 
 # Begin tests
 class AppTest < Minitest::Unit::TestCase
