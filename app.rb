@@ -3,6 +3,7 @@ require 'bundler/setup'
 require 'sinatra' # Will start web server
 require 'active_record'
 require 'pry'
+
 # Initial seed of DB
 require './development'
 
@@ -31,7 +32,15 @@ get '/employees/:id' do
   employee.to_json
 end
 
+# Add a new employee
 post '/employees' do
   payload = JSON.parse(request.body.read)
   employee = Employee.create(payload).to_json
+end
+
+# Delete an employee
+delete '/employees/:id' do
+  employee = Employee.find(params["id"]).destroy
+
+  employee.to_json
 end

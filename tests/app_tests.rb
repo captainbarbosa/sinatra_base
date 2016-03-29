@@ -61,9 +61,16 @@ class AppTest < Minitest::Unit::TestCase
     hash = {name: 'Nadia'}
     response = post("/employees", hash.to_json, { "CONTENT_TYPE" => "application/json" })
     body = JSON.parse(response.body)
-    # assert response.ok?
-    assert_equal "Nadia", body["name"]
 
+    assert response.ok?
+    assert_equal "Nadia", body["name"]
+  end
+
+  def test_employee_can_be_deleted
+    response = delete '/employees/1'
+
+    assert response.ok?
+    assert_equal nil, @t.employees.find_by(name: "Bob")
   end
 
 end
