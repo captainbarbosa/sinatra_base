@@ -44,3 +44,9 @@ delete '/employees/:id' do
 
   employee.to_json
 end
+
+# Change an employee's name
+patch '/employees/:id' do
+  payload = JSON.parse(request.body.read)
+  employee = Employee.find(params["id"]).update(payload).to_json
+end

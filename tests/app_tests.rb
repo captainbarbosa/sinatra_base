@@ -73,4 +73,12 @@ class AppTest < Minitest::Unit::TestCase
     assert_equal nil, @t.employees.find_by(name: "Bob")
   end
 
+  def test_employee_name_can_be_changed
+    hash = {name: 'THE BOSS'}
+    response = patch("/employees/4", hash.to_json, { "CONTENT_TYPE" => "application/json" })
+
+    assert response.ok?
+    assert_equal "true", response.body
+  end
+
 end
