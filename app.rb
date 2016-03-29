@@ -30,3 +30,8 @@ get '/employees/:id' do
 
   employee.to_json
 end
+
+post '/employees' do
+  payload = JSON.parse(request.body.read)
+  employee = Employee.create(payload).to_json
+end

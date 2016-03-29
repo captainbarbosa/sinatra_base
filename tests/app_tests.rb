@@ -57,4 +57,13 @@ class AppTest < Minitest::Unit::TestCase
     assert_equal @t.employees.find_by(1).to_json, response.body
   end
 
+  def test_can_create_a_new_employee_through_endpoint
+    hash = {name: 'Nadia'}
+    response = post("/employees", hash.to_json, { "CONTENT_TYPE" => "application/json" })
+    body = JSON.parse(response.body)
+    # assert response.ok?
+    assert_equal "Nadia", body["name"]
+
+  end
+
 end
