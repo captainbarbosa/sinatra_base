@@ -1,4 +1,5 @@
 Modifies an existing API to work with Sinatra, providing HTTP responses.
+Created as an assignment while at The Iron Yard.
 
 The data represents multiple employees belonging to a department housed a SQLite database.
 
